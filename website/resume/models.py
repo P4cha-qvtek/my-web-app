@@ -30,8 +30,6 @@ class ExperienceHighlight(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
-    emoji = models.CharField(max_length=10, default="💻", help_text="Emoji for the project image")
-    image = models.ImageField(upload_to='project_images/', blank=True, null=True)  # for future images
     summary = models.TextField()
     order = models.IntegerField(default=0, help_text="Display order (higher = shows first)")
     
@@ -57,7 +55,6 @@ class ProjectPoint(models.Model):
 class Technology(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='technologies')
     name = models.CharField(max_length=100)
-    icon_url = models.URLField(help_text="DevIcon URL from https://devicon.dev")
     order = models.IntegerField(default=0)
     
     class Meta:

@@ -59,15 +59,15 @@ body {
     transform: translateX(-50%);
     width: auto;
     max-width: 800px;
-    background: #242423;
-    backdrop-filter: blur(10px);
-    border-radius: 40px;
+    background: #393a3c;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
     padding: 10px 25px;
-    box-shadow: 0 8px 30px #efeeea;
+    box-shadow: 0 5px 5px #ced4da;
     z-index: 1000;
     transition: all 0.3s ease;
     font-family: 'Tomorrow', sans-serif;
-    font-size: 0.40em;
+    font-size: 1em;
 }
 
 .nav-container {
@@ -123,19 +123,19 @@ body {
 }
 
 .nav-links a {
-    color: #ccc5b9;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 300;
     padding: 8px 18px;
     border-radius: 25px;
     transition: all 0.3s ease;
-    font-size: medium;
+    font-size: 1em;
 }
 
 .nav-links a:hover,
 .nav-links a.active {
-    background: #9ec7b9;
-    color: #27272b;
+    background: #38b000;
+    color: #000000;
 }
 
 .menu-toggle {
@@ -200,8 +200,8 @@ body {
     position: fixed;
     width: 16px; /* Increased from 12px */
     height: 16px; /* Increased from 12px */
-    background: #3a5a40; /* Darker, consistent color */
-    border-radius: 50%;
+    background: #393a3c; /* Darker, consistent color */
+    border-radius: 70%;
     pointer-events: none;
     z-index: 10000;
     transform: translate(-50%, -50%);
@@ -467,7 +467,7 @@ input, textarea {
 .content-section a {
     display: block;
     padding: 18px 20px;
-    background: linear-gradient(140deg, #242423 0%, #242423 200%);
+    background: linear-gradient(140deg, #393a3c 0%, #393a3c 200%);
     border: none;
     border-radius: 15px;
     color: #f5f3f4;
@@ -488,7 +488,7 @@ input, textarea {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #efd6ac 0%, #1b4965 200%);
+    background: linear-gradient(135deg, #393a3c 0%, #393a3c 200%);
     transition: all 0.4s ease;
     z-index: -1;
 }
@@ -500,6 +500,8 @@ input, textarea {
 .content-section a:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px #14213d;
+    background: #38b000;
+    color: #000000;
 }
 
 /* Responsive */
@@ -566,7 +568,7 @@ input, textarea {
     background: linear-gradient(135deg, #dad7cd 0%, #e5e5e5 100%);
 }
 
-/************************************************************************** FOOTER for BASE Styles */
+/************************************************************************** FOOTER for BASE Styles in HOME page */
 /* Footer Styles in base.html */
 .footer {
     display: flex;
@@ -574,7 +576,7 @@ input, textarea {
     align-items: center;
     padding: 40px 40px 20px 40px;
     background: transparent;
-    color: #403d39;
+    color: #3f3e3c;
     margin-top: 60px;
     width: 100%;
     max-width: 1000px;
@@ -587,7 +589,7 @@ input, textarea {
 .footer p {
     margin: 0;
     font-size: 0.9em;
-    color: #83817d;
+    color: #5e5d5b;
 }
 
 .social-links {
@@ -601,7 +603,7 @@ input, textarea {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #403d39;
+    color: #2e2e2e;
     text-decoration: none;
     font-size: 1em;
     font-weight: 500;
@@ -609,7 +611,7 @@ input, textarea {
 }
 
 .social-links a:hover {
-    color: #eb5e28;
+    color: #38b000;
     transform: translateY(-2px);
 }
 
@@ -624,6 +626,63 @@ input, textarea {
         text-align: center;
     }
 }
+
+
+/********************************legend indicator in HOME page*/
+.legend-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: #bf0603;
+    color: white;
+    border-radius: 50%;
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(235, 94, 40, 0.4);
+    transition: all 0.3s ease;
+}
+
+.info-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(235, 94, 40, 0.6);
+}
+
+.legend-text {
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+    background: rgba(37, 36, 34, 0.95);
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-family: 'Tomorrow', sans-serif;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.info-icon:hover + .legend-text {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
 
 /*********************************************************************************** ABOUT PAGE Styles */
 .about-page {
@@ -915,7 +974,7 @@ input, textarea {
 
 /* Buttons - Vertical Rectangles with Animated Border */
 .option-btn {
-  background: linear-gradient(135deg, #242423 0%, #242423 100%);
+  background: linear-gradient(135deg, #393a3c 0%, #393a3c 100%);
   color: #ffffff;
   border: none;
   padding: 0;
@@ -947,11 +1006,11 @@ input, textarea {
 .option-btn span {
   background: linear-gradient(
     90deg,
-    #f8ddb0 0%,
-    #bcd8e7 25%,
-    #9ec7b9 50%,
-    #3a5a40 75%,
-    #01394c 100%
+    #252422 0%,
+    #393a3c 25%,
+    #008000 50%,
+    #70e000 75%,
+    #70e000 100%
   );
   background-size: 200% auto;
   background-clip: text;
@@ -986,9 +1045,7 @@ input, textarea {
     rgba(255, 255, 255, 0.1)
   );
   background-size: 300% 300%;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   animation: glassFlow 3s ease infinite;
@@ -1202,10 +1259,10 @@ input, textarea {
   top: 2px; 
   width: 14px;
   height: 14px;
-  background: #e9c46a;
+  background: #252422;
   border-radius: 50%;
-  border: 3px solid #e9c46a;
-  box-shadow: 0 0 0 2px #e9c46a;
+  border: 3px solid #252422;
+  box-shadow: 0 0 0 2px #252422;
   z-index: 5;
 }
 
@@ -1213,12 +1270,12 @@ input, textarea {
 .experience-card::after {
   content: '';
   position: absolute;
-  left: calc(100% + 77px); /* Keep original */
+  left: calc(100% + 79px); /* Keep original */
   top: 47px;
   width: 2px;
   height: calc(100% + 45px);
-  background: #004540;
-  z-index: 1;
+  background: #008000;
+  z-index: -3;
 }
 
 /* Remove line from last card */
@@ -1311,13 +1368,13 @@ input, textarea {
   width: 100%;
   flex-shrink: 0;
   display: flex;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 248, 0.95) 100%);
+  background: linear-gradient(135deg, #e9ecef 0%, #e9ecef 100%);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   min-height: 400px;
   transition: all 0.4s ease;
-  position: relative;
+  position: auto;
 }
 
 .project-card:hover {
@@ -1326,38 +1383,9 @@ input, textarea {
   border-color: rgba(235, 94, 40, 0.4);
 }
 
-/* Project Image Section (Left Side - 40%) */
-.project-image {
-  width: 40%;
-  min-height: 400px;
-  background: linear-gradient(135deg, #264653 0%, #264653 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.05);
-}
-
-/* Placeholder for projects without images */
-.project-image.placeholder {
-  font-size: 5rem;
-  color: rgba(255, 255, 255, 0.3);
-}
-
 /* Project Content Section (Right Side - 60%) */
 .project-content {
-  width: 60%;
+  width: 100%;
   padding: 40px 45px;
   display: flex;
   flex-direction: column;
@@ -1390,13 +1418,13 @@ input, textarea {
   margin: 0 0 20px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .project-points li {
   font-family: 'Tomorrow', sans-serif;
-  font-size: 1rem;
-  color: #00132d;
+  font-size: 1.03rem;
+  color: #000c1b;
   line-height: 1.6;
   padding-left: 22px;
   position: relative;
@@ -1415,9 +1443,9 @@ input, textarea {
 
 /* Technologies Footer */
 .project-technologies {
-  margin-top: auto;
-  padding-top: 18px;
-  border-top: 2px solid #013c58;
+  margin-top: 5px;
+  padding-top: 5px;
+  /* border-top: 2px solid #fb8500; */
   display: flex;
   align-items: center;
   gap: 15px;
@@ -1427,28 +1455,34 @@ input, textarea {
 .project-technologies span {
   font-family: 'Tomorrow', sans-serif;
   font-size: 0.9rem;
-  color: #013c58;
+  color: #000000;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.project-technologies .tech-icons {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+.project-technologies .tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
 }
 
-.project-technologies .tech-icon {
-  width: 32px;
-  height: 32px;
-  transition: transform 0.3s ease;
-  filter: grayscale(0.3);
+.project-technologies .tech-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #252422;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 400;
+    color: #e9ecef;
+    transition: all 0.3s ease;
+    cursor: default;
 }
 
-.project-technologies .tech-icon:hover {
-  transform: scale(1.2) rotate(5deg);
-  filter: grayscale(0);
+.project-technologies .tech-badge:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
 }
 
 /* Navigation Buttons - Outside the Cards */
@@ -1464,8 +1498,8 @@ input, textarea {
 }
 
 .carousel-btn {
-  background: linear-gradient(135deg, #e9c46a 0%, #e9c46a 100%);
-  color: 00132d;
+  background: linear-gradient(135deg, #393a3c 0%, #393a3c 100%);
+  color: #e9ecef;
   border: none;
   width: 55px;
   height: 55px;
@@ -1483,6 +1517,7 @@ input, textarea {
 
 .carousel-btn:hover {
   transform: scale(1.1);
+  background: #38b000;
   box-shadow: 0 6px 20px #fbf7ef;
 }
 
@@ -1671,7 +1706,6 @@ input, textarea {
 }
 
 .certifications-list li:hover span {
-    color: #eb5e28;
     transform: translateY(-3px);
 }
 
@@ -1884,11 +1918,11 @@ input, textarea {
   background: linear-gradient(
     to bottom,
     transparent,
-    #9ec7b9 10%,
-    #3a5a40 30%,
-    #e58f65 50%,
-    #3a5a40 70%,
-    #9ec7b9 90%,
+    #252422 10%,
+    #393a3c 30%,
+    #ccff33 50%,
+    #393a3c 70%,
+    #252422 90%,
     transparent
   );
   animation: linePulse 3s ease-in-out infinite;
@@ -1932,7 +1966,7 @@ input, textarea {
   font-family: 'Tomorrow', sans-serif;
   font-size: 2.2em;
   font-weight: 700;
-  color: #02010a;
+  color: #000000;
   margin-bottom: 5px; /* Reduced from 15px */
   text-align: left;
 }
@@ -1942,7 +1976,7 @@ input, textarea {
   justify-content: flex-end;
   align-items: flex-start;
   gap: 15px;
-  color: #02010a;
+  color: #000000;
   font-family: 'Tomorrow', sans-serif;
   text-align: right;
   width: 100%;
@@ -1970,20 +2004,20 @@ input, textarea {
 
 .contact-info-item .info-label {
   font-size: 1.05em; /* Increased from 1em */
-  color: #1b1b1e;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
 }
 
 .contact-info-item .info-value {
-  color: #252422;
+  color: #5f6177;
   font-weight: 500;
   font-size: 1.25em; /* Increased from 1.1em */
 }
 
 .contact-info-item a {
-  color: #252422;
+  color: #000000;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -2005,7 +2039,7 @@ input, textarea {
   font-family: 'Tomorrow', sans-serif;
   font-size: 2em; /* Reduced from 2.2em */
   font-weight: 700;
-  color: #02010a;
+  color: #000000;
   margin-bottom: 20px; /* Reduced from 25px */
   text-align: center;
   width: 100%;
@@ -2023,7 +2057,7 @@ form {
 form label {
   font-family: 'Tomorrow', sans-serif;
   font-size: 0.85em; /* Reduced from 0.95em */
-  color: #1b1b1e;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -2090,7 +2124,7 @@ form p {
 form label {
   font-family: 'Tomorrow', sans-serif;
   font-size: 0.95em;
-  color: #1b1b1e;
+  color: #000000;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -2107,7 +2141,7 @@ form textarea {
   background: transparent;
   font-family: 'Tomorrow', sans-serif;
   font-size: 0.95rem; /* Reduced from 1rem */
-  color: #252422;
+  color: #000000;
   transition: all 0.3s ease;
   width: 90%;
   max-width: 320px; /* Reduced from 380px */
@@ -2116,7 +2150,7 @@ form textarea {
 form input:focus,
 form textarea:focus {
   outline: none;
-  border-bottom: 2px solid #1d2d44;
+  border-bottom: 2px solid #393a3c;
   background: transparent;
 }
 
@@ -2136,13 +2170,13 @@ form textarea::placeholder {
 /* Optional: add a gentle highlight on hover */
 form input:hover,
 form textarea:hover {
-  border-bottom-color: #1d2d44;
+  border-bottom-color: #393a3c;
 }
 
 /* Submit Button */
 form input[type="submit"] {
   padding: 11px 26px; /* Reduced from 12px 30px */
-  background: linear-gradient(135deg, #242423 0%, #242423 100%);
+  background: linear-gradient(135deg, #393a3c 0%, #393a3c 100%);
   color: #f5f3f4;
   border: none;
   border-radius: 10px;
@@ -2160,8 +2194,8 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-  background: linear-gradient(135deg, #242423 0%, #242423 100%);
-  color: #f5f3f4;
+  background: linear-gradient(135deg, #38b000 0%, #38b000 100%);
+  color: #000000;
   transform: translateY(-5px);
 }
 

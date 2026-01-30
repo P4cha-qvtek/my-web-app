@@ -137,7 +137,7 @@ window.addEventListener('resize', () => {
 });
 
 // Array of colors to randomly choose from
-const colors = ['#000000', '#1f2a2d', '#f8ddb0', '#bcd8e7', '#e58f65'];
+const colors = ['#393a3c', '#003f88', '#bf0603', '#38b000', '#006400'];
 
 class Particle {
     constructor() {

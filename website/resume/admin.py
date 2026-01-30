@@ -13,7 +13,7 @@ admin.site.register(ExperienceHighlight, experienceHighlightInline)
 
 
 class projectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'emoji', 'order', 'image')
+    list_display = ('title', 'order')
 
 admin.site.register(Project, projectAdmin)
 
@@ -23,7 +23,7 @@ class projectPointInline(admin.ModelAdmin):
 admin.site.register(ProjectPoint, projectPointInline)
 
 class technologyAdmin(admin.ModelAdmin):
-    list_display = ('project', 'name', 'order', 'icon_url')
+    list_display = ('project', 'name', 'order')
 
 admin.site.register(Technology, technologyAdmin)
 

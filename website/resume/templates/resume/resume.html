@@ -53,15 +53,6 @@
                         {% for project in projects %}
                         <!-- Project Card -->
                         <div class="project-card">
-                            <!-- Left: Image -->
-                            <div class="project-image placeholder">
-                                {% if project.image %}
-                                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
-                                {% else %}
-                                    {{ project.emoji }}
-                                {% endif %}
-                            </div>
-                            
                             <!-- Right: Content -->
                             <div class="project-content">
                                 <h3>{{ project.title }}</h3>
@@ -75,9 +66,9 @@
                                 </ul>
                                 <div class="project-technologies">
                                     <span>Technologies:</span>
-                                    <div class="tech-icons">
+                                    <div class="tech-badges">
                                         {% for tech in project.technologies.all %}
-                                        <img src="{{ tech.icon_url }}" alt="{{ tech.name }}" class="tech-icon" title="{{ tech.name }}">
+                                        <span class="tech-badge" title="{{ tech.name }}">{{ tech.name }}</span>
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -132,7 +123,7 @@
             <li><span class="iconify" data-icon="logos:bash"></span></li>
             <li><span class="iconify" data-icon="logos:mysql"></span></li>
             <li><span class="iconify" data-icon="logos:git-icon"></span></li>
-            <li><span class="iconify" data-icon="logos:jenkins"></span></li>
+            <li><span class="iconify" data-icon="logos:jupyter"></span></li>
         </ul>
     </div>
 
