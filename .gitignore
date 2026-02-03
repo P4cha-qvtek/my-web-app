@@ -1,2 +1,11 @@
-ECHO est  activado.
-"Steps for future updates.txt" 
+db.sqlite3 
+media
+staticfiles
+*.tar.gz
+*.zip
+*.tar
+*.rar
+*backup*
+db.sqlite3 
+"Steps for future update.txt"website/media/ 
+website/staticfiles/ 

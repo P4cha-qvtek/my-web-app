@@ -124,9 +124,11 @@ swiftUpElements.forEach(elem => {
 
 
 //  ---------------------------------------------------------------------- animation of the particle in the background
-// Particle Network Animation with geometric figures
+//  Spacial Constellation Animation
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+
+canvas.style.background = '#000814';
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -136,215 +138,399 @@ window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
 });
 
-// Array of colors to randomly choose from
 const colors = ['#393a3c', '#003f88', '#bf0603', '#38b000', '#006400'];
+
+// Expanded constellation patterns
+const constellationPatterns = [
+    {
+        name: "Big Dipper",
+        stars: [
+            {x: 0, y: 0}, {x: 70, y: -30}, {x: 140, y: -45}, {x: 210, y: -30},
+            {x: 170, y: 60}, {x: 110, y: 120}, {x: 40, y: 150}
+        ],
+        connections: [[0,1], [1,2], [2,3], [3,4], [4,5], [5,6]]
+    },
+    {
+        name: "Orion",
+        stars: [
+            {x: 0, y: 0}, {x: 90, y: 15}, {x: 180, y: 0},
+            {x: 45, y: -120}, {x: 135, y: -105},
+            {x: 45, y: 120}, {x: 135, y: 135}
+        ],
+        connections: [[0,1], [1,2], [3,0], [4,2], [0,5], [2,6], [3,4]]
+    },
+    {
+        name: "Cassiopeia",
+        stars: [
+            {x: 0, y: 0}, {x: 60, y: -75}, {x: 120, y: -30},
+            {x: 180, y: -90}, {x: 240, y: -15}
+        ],
+        connections: [[0,1], [1,2], [2,3], [3,4]]
+    },
+    {
+        name: "Scorpius",
+        stars: [
+            {x: 0, y: 0}, {x: 50, y: -40}, {x: 100, y: -50}, {x: 150, y: -30},
+            {x: 180, y: 20}, {x: 200, y: 70}, {x: 210, y: 120}, {x: 200, y: 170}
+        ],
+        connections: [[0,1], [1,2], [2,3], [3,4], [4,5], [5,6], [6,7]]
+    },
+    {
+        name: "Cygnus",
+        stars: [
+            {x: 0, y: 0}, {x: 60, y: -80}, {x: 120, y: -160},
+            {x: -80, y: -100}, {x: 200, y: -100}, {x: 120, y: 40}
+        ],
+        connections: [[0,1], [1,2], [1,3], [1,4], [0,5]]
+    },
+    {
+        name: "Lyra",
+        stars: [
+            {x: 0, y: 0}, {x: 80, y: -60}, {x: 140, y: -20}, {x: 100, y: 80}
+        ],
+        connections: [[0,1], [1,2], [2,3], [3,0]]
+    },
+    {
+        name: "Aquarius",
+        stars: [
+            {x: 0, y: 0}, {x: 60, y: -40}, {x: 120, y: -60}, {x: 180, y: -40},
+            {x: 90, y: 50}, {x: 150, y: 70}
+        ],
+        connections: [[0,1], [1,2], [2,3], [1,4], [2,5]]
+    },
+    {
+        name: "Gemini",
+        stars: [
+            {x: 0, y: 0}, {x: 40, y: -80}, {x: 80, y: -140}, 
+            {x: 120, y: 0}, {x: 160, y: -80}, {x: 200, y: -140}
+        ],
+        connections: [[0,1], [1,2], [3,4], [4,5], [1,4]]
+    },
+    {
+        name: "Andromeda",
+        stars: [
+            {x: 0, y: 0}, {x: 70, y: -50}, {x: 140, y: -80}, {x: 210, y: -60},
+            {x: 140, y: 20}
+        ],
+        connections: [[0,1], [1,2], [2,3], [2,4]]
+    }
+];
+
+let usedPatterns = [];
+
+function getRandomPattern() {
+    // Reset if all used
+    if (usedPatterns.length >= constellationPatterns.length) {
+        usedPatterns = [];
+    }
+    
+    // Get unused patterns
+    const available = constellationPatterns.filter((_, idx) => !usedPatterns.includes(idx));
+    const chosenIndex = constellationPatterns.indexOf(available[Math.floor(Math.random() * available.length)]);
+    usedPatterns.push(chosenIndex);
+    
+    return constellationPatterns[chosenIndex];
+}
 
 class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.4; // Reduced from 0.8 to 0.4 (slower)
-        this.vy = (Math.random() - 0.5) * 0.4; // Reduced from 0.8 to 0.4 (slower)
-        this.radius = 2;
+        this.vx = (Math.random() - 0.5) * 0.5; // Slower for vast space feel
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.radius = 2.5;
         this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.colorChangeInterval = Math.random() * 3000 + 2000;
+        this.colorChangeInterval = Math.random() * 5000 + 3000; // Slower color change
         this.lastColorChange = Date.now();
+        
+        // Constellation properties
+        this.isLocked = false;
+        this.lockedUntil = 0;
+        this.targetX = this.x;
+        this.targetY = this.y;
+        this.constellationId = null;
+        this.starIndex = null;
+        this.formingProgress = 0;
+        this.originalColor = this.color;
     }
 
     update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        const currentTime = Date.now();
         
-        // Change color randomly
-        if (Date.now() - this.lastColorChange > this.colorChangeInterval) {
-            this.color = colors[Math.floor(Math.random() * colors.length)];
-            this.lastColorChange = Date.now();
-            this.colorChangeInterval = Math.random() * 3000 + 2000;
+        // Check if constellation lock has expired
+        if (this.isLocked && currentTime > this.lockedUntil) {
+            this.isLocked = false;
+            this.constellationId = null;
+            this.starIndex = null;
+            this.formingProgress = 0;
+            this.color = this.originalColor; // Restore original color
         }
+        
+        // Movement - ALWAYS move, even when locked
+        if (this.isLocked) {
+            // Gradually increase forming progress - balanced speed
+            if (this.formingProgress < 1) {
+                this.formingProgress += 0.012; // Faster than before but not too fast
+            }
+            
+            // Gently drift toward target
+            const dx = this.targetX - this.x;
+            const dy = this.targetY - this.y;
+            const speed = 0.06 * this.formingProgress; // Balanced movement speed
+            this.x += dx * speed;
+            this.y += dy * speed;
+        } else {
+            // Normal free roaming - always active
+            this.x += this.vx;
+            this.y += this.vy;
+        }
+
+        // Bounce off edges with proper velocity reversal
+        if (this.x <= 0 || this.x >= canvas.width) {
+            this.vx *= -1;
+            this.x = Math.max(0, Math.min(canvas.width, this.x));
+        }
+        if (this.y <= 0 || this.y >= canvas.height) {
+            this.vy *= -1;
+            this.y = Math.max(0, Math.min(canvas.height, this.y));
+        }
+        
+        // Change color randomly (only when not locked)
+        if (!this.isLocked && currentTime - this.lastColorChange > this.colorChangeInterval) {
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.originalColor = this.color;
+            this.lastColorChange = currentTime;
+            this.colorChangeInterval = Math.random() * 5000 + 3000;
+        }
+    }
+    
+    lockInConstellation(targetX, targetY, duration, constellationId, starIndex, color) {
+        this.isLocked = true;
+        this.targetX = targetX;
+        this.targetY = targetY;
+        this.lockedUntil = Date.now() + duration;
+        this.constellationId = constellationId;
+        this.starIndex = starIndex;
+        this.color = color;
+        this.formingProgress = 0;
     }
 
     draw() {
+        const opacity = this.isLocked ? this.formingProgress * 0.7 : 0.5; // Very soft
+        
+        // Ethereal glow
+        if (this.isLocked) {
+            ctx.shadowBlur = 20 * opacity;
+            ctx.shadowColor = this.color;
+            ctx.globalAlpha = opacity;
+        } else {
+            ctx.globalAlpha = opacity;
+        }
+        
         ctx.fillStyle = this.color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fill();
+        
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
     }
 }
 
 const particles = [];
-const particleCount = 80;
-const activeShapes = new Map(); // Track shapes with fade in/out
-const shapeStability = new Map(); // Track how long shapes have existed
+const particleCount = 90; // More particles for 3-5 constellations
+const constellationDuration = 8000; // 8 seconds total
+const constellationFadeInDuration = 1200; // 1.2 seconds fade in
+const constellationFadeOutDuration = 2000; // 2 seconds fade out
+const activeConstellations = new Map();
+let nextConstellationId = 0;
 
 for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle());
 }
 
-function findConnectedParticles() {
-    const connections = [];
+function formConstellation() {
+    // Find free particles
+    const freeParticles = particles.filter(p => !p.isLocked);
     
-    for (let i = 0; i < particles.length; i++) {
-        const connected = [i];
+    if (freeParticles.length < 3) return;
+    
+    // Get random unused pattern
+    const pattern = getRandomPattern();
+    
+    if (freeParticles.length < pattern.stars.length) return;
+    
+    // Random position ANYWHERE on screen with proper margins
+    const margin = 200;
+    const centerX = Math.random() * (canvas.width - margin * 2) + margin;
+    const centerY = Math.random() * (canvas.height - margin * 2) + margin;
+    
+    // Random scale for size variety
+    const scale = 0.6 + Math.random() * 0.8; // 60% to 140% size
+    
+    const constellationId = nextConstellationId++;
+    const chosenColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Assign CLOSEST free particles to minimize travel distance
+    const particlesWithDistance = freeParticles.map(p => ({
+        particle: p,
+        distance: Math.sqrt((p.x - centerX) ** 2 + (p.y - centerY) ** 2)
+    }));
+    
+    particlesWithDistance.sort((a, b) => a.distance - b.distance);
+    
+    // Assign particles
+    for (let i = 0; i < pattern.stars.length; i++) {
+        const particle = particlesWithDistance[i].particle;
+        const star = pattern.stars[i];
         
-        for (let j = 0; j < particles.length; j++) {
-            if (i === j) continue;
-            
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            
-            if (distance < 150) {
-                connected.push(j);
-            }
-        }
-        
-        if (connected.length >= 3) {
-            connections.push(connected);
+        particle.lockInConstellation(
+            centerX + star.x * scale,
+            centerY + star.y * scale,
+            constellationDuration,
+            constellationId,
+            i,
+            chosenColor
+        );
+    }
+    
+    activeConstellations.set(constellationId, {
+        pattern: pattern,
+        color: chosenColor,
+        expiresAt: Date.now() + constellationDuration,
+        createdAt: Date.now()
+    });
+}
+
+function drawConstellations() {
+    const currentTime = Date.now();
+    
+    // Clean up expired
+    for (let [id, data] of activeConstellations.entries()) {
+        if (currentTime > data.expiresAt) {
+            activeConstellations.delete(id);
         }
     }
     
-    return connections;
-}
-
-function drawGeometricShape(indices, opacity = 1) {
-    if (indices.length < 3) return;
-    
-    // Take first 3-6 particles to form a shape
-    const shapeSize = Math.min(indices.length, Math.floor(Math.random() * 4) + 3);
-    const shapeIndices = indices.slice(0, shapeSize);
-    
-    // Random color with transparency
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    let r, g, b;
-    
-    if (randomColor.startsWith('#')) {
-        const hex = randomColor.replace('#', '');
+    // Draw constellations
+    activeConstellations.forEach((data, id) => {
+        const pattern = data.pattern;
+        const constellationParticles = particles.filter(p => p.constellationId === id);
+        
+        const age = currentTime - data.createdAt;
+        const timeUntilExpiry = data.expiresAt - currentTime;
+        
+        let constellationOpacity = 1;
+        
+        if (age < constellationFadeInDuration) {
+            constellationOpacity = age / constellationFadeInDuration;
+        } else if (timeUntilExpiry < constellationFadeOutDuration) {
+            constellationOpacity = timeUntilExpiry / constellationFadeOutDuration;
+        }
+        
+        let r, g, b;
+        const hex = data.color.replace('#', '');
         r = parseInt(hex.substr(0, 2), 16);
         g = parseInt(hex.substr(2, 2), 16);
         b = parseInt(hex.substr(4, 2), 16);
-    }
-    
-    // Draw filled shape with controlled opacity
-    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${0.15 * opacity})`;
-    ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${0.4 * opacity})`;
-    ctx.lineWidth = 1.5;
-    
-    ctx.beginPath();
-    ctx.moveTo(particles[shapeIndices[0]].x, particles[shapeIndices[0]].y);
-    
-    for (let i = 1; i < shapeIndices.length; i++) {
-        ctx.lineTo(particles[shapeIndices[i]].x, particles[shapeIndices[i]].y);
-    }
-    
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-}
-
-function connectParticles() {
-    const currentShapes = new Set();
-    const fadeSpeed = 0.03; // Controls fade speed
-    const stabilityThreshold = 3000; // Milliseconds particles must stay connected before shape appears
-    const currentTime = Date.now();
-    
-    for (let i = 0; i < particles.length; i++) {
-        const connected = [i];
         
-        for (let j = 0; j < particles.length; j++) {
-            if (i === j) continue;
+        // Draw connections
+        pattern.connections.forEach(([starA, starB]) => {
+            const particleA = constellationParticles.find(p => p.starIndex === starA);
+            const particleB = constellationParticles.find(p => p.starIndex === starB);
             
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < 150) {
-                connected.push(j);
+            if (particleA && particleB) {
+                const lineOpacity = Math.min(particleA.formingProgress, particleB.formingProgress) * constellationOpacity;
                 
-                // Draw connection line
-                const color = particles[i].color;
-                let r, g, b;
-                
-                if (color.startsWith('#')) {
-                    const hex = color.replace('#', '');
-                    r = parseInt(hex.substr(0, 2), 16);
-                    g = parseInt(hex.substr(2, 2), 16);
-                    b = parseInt(hex.substr(4, 2), 16);
-                }
-                
-                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${1 - distance / 150})`;
-                ctx.lineWidth = 0.5;
+                // More visible lines
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${0.65 * lineOpacity})`; // Increased visibility
+                ctx.lineWidth = 2 * lineOpacity;
+                ctx.shadowBlur = 15 * lineOpacity;
+                ctx.shadowColor = data.color;
                 ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.moveTo(particleA.x, particleA.y);
+                ctx.lineTo(particleB.x, particleB.y);
+                ctx.stroke();
+                
+                // Soft outer glow
+                ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${0.25 * lineOpacity})`; // More visible
+                ctx.lineWidth = 4 * lineOpacity;
+                ctx.shadowBlur = 25 * lineOpacity;
+                ctx.beginPath();
+                ctx.moveTo(particleA.x, particleA.y);
+                ctx.lineTo(particleB.x, particleB.y);
                 ctx.stroke();
             }
-        }
+        });
         
-        // Check if shape should be drawn (3+ particles connected)
-        if (connected.length >= 3) {
-            const shapeKey = connected.sort((a, b) => a - b).join('-');
-            currentShapes.add(shapeKey);
-            
-            // Track stability - how long has this shape existed?
-            if (!shapeStability.has(shapeKey)) {
-                shapeStability.set(shapeKey, currentTime);
-            }
-            
-            const shapeAge = currentTime - shapeStability.get(shapeKey);
-            
-            // Only draw if shape has been stable long enough
-            if (shapeAge >= stabilityThreshold) {
-                // Get or create shape opacity
-                if (!activeShapes.has(shapeKey)) {
-                    activeShapes.set(shapeKey, { opacity: 0, color: colors[Math.floor(Math.random() * colors.length)] });
-                }
-                
-                const shapeData = activeShapes.get(shapeKey);
-                
-                // Fade in
-                if (shapeData.opacity < 1) {
-                    shapeData.opacity = Math.min(1, shapeData.opacity + fadeSpeed);
-                }
-                
-                drawGeometricShape(connected, shapeData.opacity);
-            }
-        }
-    }
+        ctx.shadowBlur = 0;
+    });
     
-    // Clean up stability tracking for shapes that no longer exist
-    for (let key of shapeStability.keys()) {
-        if (!currentShapes.has(key)) {
-            shapeStability.delete(key);
-        }
-    }
-    
-    // Fade out shapes that no longer exist
-    for (let [key, shapeData] of activeShapes.entries()) {
-        if (!currentShapes.has(key) || !shapeStability.has(key)) {
-            shapeData.opacity = Math.max(0, shapeData.opacity - fadeSpeed);
+    // Very faint free particle connections
+    particles.forEach((particle, i) => {
+        if (particle.isLocked) return;
+        
+        particles.forEach((other, j) => {
+            if (i >= j || other.isLocked) return;
             
-            if (shapeData.opacity > 0) {
-                const indices = key.split('-').map(Number);
-                drawGeometricShape(indices, shapeData.opacity);
-            } else {
-                activeShapes.delete(key);
+            const dx = particle.x - other.x;
+            const dy = particle.y - other.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 120) {
+                const opacity = 1 - distance / 120;
+                ctx.strokeStyle = `rgba(80, 80, 100, ${opacity * 0.06})`;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(particle.x, particle.y);
+                ctx.lineTo(other.x, other.y);
+                ctx.stroke();
             }
-        }
+        });
+    });
+}
+
+let burstCooldown = false;
+
+function formConstellationBurst() {
+    const numConstellations = Math.floor(Math.random() * 3) + 3; // 3-5 constellations
+    
+    for (let i = 0; i < numConstellations; i++) {
+        setTimeout(() => {
+            formConstellation();
+        }, i * 250); // Slightly faster stagger
     }
 }
+
+let nextConstellationTime = Date.now() + Math.random() * 3000 + 3000; // 3-6 seconds (initial)
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    const currentTime = Date.now();
+    
+    // Form burst of constellations at random intervals
+    if (currentTime >= nextConstellationTime && !burstCooldown) {
+        burstCooldown = true;
+        formConstellationBurst();
+        // Set next random burst time (6-12 seconds) - much shorter
+        nextConstellationTime = currentTime + Math.random() * 6000 + 6000;
+        
+        // Reset cooldown after burst completes
+        setTimeout(() => {
+            burstCooldown = false;
+        }, 2000);
+    }
 
+    // Draw connections first
+    drawConstellations();
+    
+    // Update and draw particles
     particles.forEach(particle => {
         particle.update();
         particle.draw();
     });
 
-    connectParticles();
     requestAnimationFrame(animate);
 }
 

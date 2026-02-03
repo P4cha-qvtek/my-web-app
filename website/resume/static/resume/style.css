@@ -1,12 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Tomorrow:wght@300;400;500;600;700&display=swap');
+@font-face {
+    font-family: 'Tomorrow';
+    src: url('/static/fonts/Tomorrow-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tomorrow';
+    src: url('/static/fonts/Tomorrow-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tomorrow';
+    src: url('/static/fonts/Tomorrow-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tomorrow';
+    src: url('/static/fonts/Tomorrow-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tomorrow';
+    src: url('/static/fonts/Tomorrow-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
 
 
 /*************************************************************************************** GLOBAL Styles */
 :root {
-    --particle-color: #293241;
-    --particle-line-color: rgba(88, 129, 87, 0.3);
-    --bg-gradient-start: #fffcf2;
-    --bg-gradient-end: #fffcf2;
+    --particle-color: #000814;
+    --particle-line-color: #000814;
+    --bg-gradient-start: #000814;
+    --bg-gradient-end: #000814;
 
     /* Font size variables */
     --base-font-size: medium; /* Change this ONE number to scale everything */
@@ -14,7 +47,7 @@
 }
 
 *, body, h1, h2, h3, h4, h5, h6, p, a, button, span, div {
-    font-family: 'Tomorrow', sans-serif, !important;
+    font-family: 'Tomorrow', sans-serif !important;
     font-weight: 300 !important;
 }
 
@@ -41,7 +74,7 @@ html {
 body {
     font-family: 'Tomorrow', sans-serif;
     line-height: 1.8;
-    color: #fffcf2;
+    color: #000814;
     background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     min-height: 100vh;
     max-width: 100%; /* Changed from 1200px */
@@ -59,15 +92,15 @@ body {
     transform: translateX(-50%);
     width: auto;
     max-width: 800px;
-    background: #393a3c;
+    background: #0a0908;
     backdrop-filter: blur(5px);
     border-radius: 20px;
-    padding: 10px 25px;
-    box-shadow: 0 5px 5px #ced4da;
+    padding: 5px 10px;
+    box-shadow: 0 1px 6px #b5bdc5;
     z-index: 1000;
     transition: all 0.3s ease;
     font-family: 'Tomorrow', sans-serif;
-    font-size: 1em;
+    font-size: 1.01em;
 }
 
 .nav-container {
@@ -134,7 +167,7 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-    background: #38b000;
+    background: #8cb369;
     color: #000000;
 }
 
@@ -200,20 +233,20 @@ body {
     position: fixed;
     width: 16px; /* Increased from 12px */
     height: 16px; /* Increased from 12px */
-    background: #393a3c; /* Darker, consistent color */
+    background: #94d2bd; /* Darker, consistent color */
     border-radius: 70%;
     pointer-events: none;
     z-index: 10000;
     transform: translate(-50%, -50%);
     transition: transform 0.15s ease, background 0.2s ease;
-    box-shadow: 0 0 10px #dce6e8;
+    box-shadow: 0 0 10px #f2f4f3;
     /* No animation on inner circle */
 }
 .cursor-outline {
     position: fixed;
     width: 40px;
     height: 40px;
-    border: 1.5px solid #000000;
+    border: 1.5px solid #e85d04;
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
@@ -336,10 +369,10 @@ input, textarea {
 .header-grid h1 {
     font-size: var(--main-title-size) !important;
     font-weight: 500;
-    color: #000814;
+    color: #e5e5e5;
     letter-spacing: -2px;
     animation: slideIn 2s ease-out;
-    font-family: 'Tomorrow', sans-serif;
+    font-family: 'Tomorrow', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 }
 
 @keyframes slideIn {
@@ -391,7 +424,7 @@ input, textarea {
 
 .main-title {
     font-size: 1.3em;
-    color: #64748b;
+    color: #d3d3d3;
     font-weight: 400;
     margin: 0;
     letter-spacing: 2px;
@@ -421,7 +454,7 @@ input, textarea {
 
 .header-grid h3 {
     font-size: 1.3em;
-    color: #64748b;
+    color: #d3d3d3;
     font-weight: 400;
     margin-top: 15px;
     letter-spacing: 2px;
@@ -440,7 +473,7 @@ input, textarea {
 
 /* Content Section - Side by Side Buttons */
 .content-section {
-    margin: 0 0 60px 0;
+    margin: 0 0 60px auto;
     max-width: 400px;
 }
 
@@ -467,7 +500,7 @@ input, textarea {
 .content-section a {
     display: block;
     padding: 18px 20px;
-    background: linear-gradient(140deg, #393a3c 0%, #393a3c 200%);
+    background: linear-gradient(140deg, #000814 0%, #000814 200%);
     border: none;
     border-radius: 15px;
     color: #f5f3f4;
@@ -476,7 +509,7 @@ input, textarea {
     font-weight: 600;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 10px #979dac;
+    box-shadow: 0 0px 0px #979dac;
     position: relative;
     overflow: hidden;
 }
@@ -500,7 +533,7 @@ input, textarea {
 .content-section a:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px #14213d;
-    background: #38b000;
+    background: #edf6f9;
     color: #000000;
 }
 
@@ -557,7 +590,7 @@ input, textarea {
 
 
 
-/* Background Canvas Style  (i am not sure for what it is.i think is for base or global*/
+/* Background Canvas Style  (i am not sure for what it is.i think is for base or global --- is the canvas of the wanderlogo?) */
 #canvas {
     position: fixed;
     top: 0;
@@ -576,7 +609,7 @@ input, textarea {
     align-items: center;
     padding: 40px 40px 20px 40px;
     background: transparent;
-    color: #3f3e3c;
+    color: #e7ecef;
     margin-top: 60px;
     width: 100%;
     max-width: 1000px;
@@ -589,7 +622,7 @@ input, textarea {
 .footer p {
     margin: 0;
     font-size: 0.9em;
-    color: #5e5d5b;
+    color: #e7ecef;
 }
 
 .social-links {
@@ -603,7 +636,7 @@ input, textarea {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #2e2e2e;
+    color: #e7ecef;
     text-decoration: none;
     font-size: 1em;
     font-weight: 500;
@@ -611,7 +644,7 @@ input, textarea {
 }
 
 .social-links a:hover {
-    color: #38b000;
+    color: #8cb369;
     transform: translateY(-2px);
 }
 
@@ -717,7 +750,7 @@ input, textarea {
 .text-zone1 {
     margin-left: 0;
     margin-right: auto;
-    border-left: 3px solid #3a5a40;
+    border-left: none;
     border-right: none;
 }
 
@@ -725,12 +758,12 @@ input, textarea {
     margin-left: auto;
     margin-right: 0;
     border-left: none;
-    border-right: 3px solid #3a5a40;
+    border-right: none;
 }    
 
 .text-zone1 h1,
 .text-zone2 h1 {
-    color: #000000;
+    color: #f0ebd8;
     font-size: 2.5em;
     margin-bottom: 20px;
     font-weight: 600;
@@ -738,7 +771,7 @@ input, textarea {
 
 .text-zone1 p,
 .text-zone2 p {
-    color: #27272b;
+    color: #f0ebd8;
     font-size: 1.3em;
     line-height: 1.8;
     margin-bottom: 15px;
@@ -750,7 +783,7 @@ input, textarea {
 }
 
 .more-about-heading h1 {
-    color: #252422;
+    color: #f0ebd8;
     font-size: 2em;
     font-weight: 600;
 }
@@ -759,7 +792,7 @@ input, textarea {
 .line-title {
   position: relative;
   width: 400px;
-  color: #000000;
+  color: #ffffff;
 }
 .line-title::before,
 .line-title::after {
@@ -767,16 +800,16 @@ input, textarea {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 4px;
+  height: 2px;
   border-radius: 2px;
 }
 .line-title::before {
-  width: 100%;
+  width: 260%;
   background: #f8f9fa;
 }
 .line-title::after {
   width: 32px;
-  background: #3a5a40;
+  background: #f8f9fa;
 }
 
 /* Carousel Styles */
@@ -974,7 +1007,7 @@ input, textarea {
 
 /* Buttons - Vertical Rectangles with Animated Border */
 .option-btn {
-  background: linear-gradient(135deg, #393a3c 0%, #393a3c 100%);
+  background: linear-gradient(135deg, #000814 0%, #000814 100%);
   color: #ffffff;
   border: none;
   padding: 0;
@@ -985,7 +1018,6 @@ input, textarea {
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 8px 25px #e0e1dd;
   width: 320px !important;
   height: 280px !important;
   display: flex;
@@ -1006,11 +1038,11 @@ input, textarea {
 .option-btn span {
   background: linear-gradient(
     90deg,
-    #252422 0%,
-    #393a3c 25%,
-    #008000 50%,
-    #70e000 75%,
-    #70e000 100%
+    #8cb369 0%,
+    #003566 25%,
+    #d8f3dc 50%,
+    #5e503f 75%,
+    #8cb369 100%
   );
   background-size: 200% auto;
   background-clip: text;
@@ -1147,14 +1179,14 @@ input, textarea {
 
 /* Experience Cards - Compact, Timeline Shows Only Dates */
 .experience-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(242, 242, 242, 0.9) 100%);
+  background: linear-gradient(135deg, #000814 0%, #000814 100%);
   border-radius: 16px;
   padding: 35px;
   margin: 45px auto 45px 50px; /* Shifted left, timeline goes right */
   max-width: 650px; /* Smaller container */
   width: 60%; /* Reduced width */
   min-height: 180px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  box-shadow: 1px 1px 1px #f1faee;
   cursor: pointer;
   position: relative;
 }
@@ -1168,8 +1200,8 @@ input, textarea {
 
 .experience-details .job-title {
   font-family: 'Tomorrow', sans-serif;
-  font-size: 1.4rem;
-  color: #252422;
+  font-size: 1.7rem;
+  color: #f1faee;
   font-weight: 700;
   margin: 0;
   line-height: 1.3;
@@ -1177,16 +1209,16 @@ input, textarea {
 
 .experience-details .company {
   font-family: 'Tomorrow', sans-serif;
-  font-size: 1.15rem; /* Slightly bigger */
-  color: #00537a;
+  font-size: 1.2rem; /* Slightly bigger */
+  color: #f1faee;
   font-weight: 600;
   margin: -12px 0px 0 400px; /* Moved up and to the right */
 }
 
 .experience-details .summary {
   font-family: 'Tomorrow', sans-serif;
-  font-size: 1.05rem;
-  color: #403d39;
+  font-size: 1.1rem;
+  color: #f1faee;
   line-height: 1.7;
   margin: 15px 0 10px 0;
 }
@@ -1203,7 +1235,7 @@ input, textarea {
 .experience-details .highlights li {
   font-family: 'Tomorrow', sans-serif;
   font-size: 1rem;
-  color: #403d39;
+  color: #f1faee;
   line-height: 1.6;
   padding-left: 20px;
   position: relative;
@@ -1217,7 +1249,7 @@ input, textarea {
   top: 8px;
   width: 8px;
   height: 8px;
-  background: #264653;
+  background: #a8dadc;
   border-radius: 50%;
 }
 
@@ -1244,8 +1276,8 @@ input, textarea {
   height: 2px;
   background: repeating-linear-gradient(
     to right,
-    #00132d 0px,
-    #00132d 6px,
+    #8cb369 0px,
+    #000814 6px,
     transparent 6px,
     transparent 12px
   );
@@ -1259,10 +1291,10 @@ input, textarea {
   top: 2px; 
   width: 14px;
   height: 14px;
-  background: #252422;
+  background: #000814;
   border-radius: 50%;
-  border: 3px solid #252422;
-  box-shadow: 0 0 0 2px #252422;
+  border: 3px solid #000814;
+  box-shadow: 0 0 1px 1px #eae0d5;
   z-index: 5;
 }
 
@@ -1274,7 +1306,7 @@ input, textarea {
   top: 47px;
   width: 2px;
   height: calc(100% + 45px);
-  background: #008000;
+  background: #8cb369;
   z-index: -3;
 }
 
@@ -1287,7 +1319,7 @@ input, textarea {
 .experience-timeline .dates {
   font-family: 'Tomorrow', sans-serif;
   font-size: 1.1rem; /* Increased from 0.95rem */
-  color: #0a2344;
+  color: #f1faee;
   font-weight: 600;
   margin: 0;
   line-height: 1.4;
@@ -1368,10 +1400,10 @@ input, textarea {
   width: 100%;
   flex-shrink: 0;
   display: flex;
-  background: linear-gradient(135deg, #e9ecef 0%, #e9ecef 100%);
+  background: linear-gradient(135deg, #000814 0%, #000814 100%);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 1px #d8e2dc;
   min-height: 400px;
   transition: all 0.4s ease;
   position: auto;
@@ -1395,7 +1427,7 @@ input, textarea {
 .project-content h3 {
   font-family: 'Tomorrow', sans-serif;
   font-size: 1.8rem;
-  color: #252422;
+  color: #f1faee;
   font-weight: 700;
   margin: 0;
   line-height: 1.3;
@@ -1405,7 +1437,7 @@ input, textarea {
 .project-summary {
   font-family: 'Tomorrow', sans-serif;
   font-size: 1.1rem;
-  color: #00132d;
+  color: #f1faee;
   line-height: 1.6;
   margin: 0 0 10px 0;
   font-style: italic;
@@ -1424,7 +1456,7 @@ input, textarea {
 .project-points li {
   font-family: 'Tomorrow', sans-serif;
   font-size: 1.03rem;
-  color: #000c1b;
+  color: #f1faee;
   line-height: 1.6;
   padding-left: 22px;
   position: relative;
@@ -1437,7 +1469,7 @@ input, textarea {
   top: 9px;
   width: 9px;
   height: 9px;
-  background: #23362b;
+  background: #a8dadc;
   border-radius: 50%;
 }
 
@@ -1455,7 +1487,7 @@ input, textarea {
 .project-technologies span {
   font-family: 'Tomorrow', sans-serif;
   font-size: 0.9rem;
-  color: #000000;
+  color: #f1faee;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1471,11 +1503,11 @@ input, textarea {
 .project-technologies .tech-badge {
     display: inline-block;
     padding: 8px 16px;
-    background: #252422;
+    background: #8cb369;
     border-radius: 20px;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
-    color: #e9ecef;
+    color: #0a0908;
     transition: all 0.3s ease;
     cursor: default;
 }
@@ -1498,7 +1530,7 @@ input, textarea {
 }
 
 .carousel-btn {
-  background: linear-gradient(135deg, #393a3c 0%, #393a3c 100%);
+  background: linear-gradient(135deg, #0d1321 0%, #0d1321 100%);
   color: #e9ecef;
   border: none;
   width: 55px;
@@ -1517,7 +1549,8 @@ input, textarea {
 
 .carousel-btn:hover {
   transform: scale(1.1);
-  background: #38b000;
+  background: #e9ecef;
+  color:#000000;
   box-shadow: 0 6px 20px #fbf7ef;
 }
 
@@ -1533,7 +1566,7 @@ input, textarea {
   margin-top: 25px;
   font-family: 'Tomorrow', sans-serif;
   font-size: 1rem;
-  color: #00132d;
+  color: #e9ecef;
   font-weight: 500;
 }
 
@@ -1635,7 +1668,7 @@ input, textarea {
 }
 
 .certifications h2 {
-    color: #00132d;
+    color: #f1faee;
     font-size: 1.5em;
     text-align: center;
     margin-bottom: 30px;
@@ -1696,7 +1729,7 @@ input, textarea {
 .certifications-list span {
     position: absolute;
     bottom: -30px;
-    color: #252422;
+    color: #f1faee;
     font-size: 0.9em;
     font-weight: 600;
     text-align: center;
@@ -1716,7 +1749,7 @@ input, textarea {
 }
 
 .bottom-section .technologies-footer h2 {
-    color: #00132d;
+    color: #f1faee;
     font-size: 1.7em;
     text-align: center;
     margin-bottom: 30px;
@@ -1826,7 +1859,7 @@ input, textarea {
 }
 
 .educations h2 {
-    color: #00132d;
+    color: #f1faee;
     font-size: 1.5em;
     text-align: center;
     margin-bottom: 30px;
@@ -1868,7 +1901,7 @@ input, textarea {
 /* Education title (h3) */
 .educations-list h3 {
     text-align: left;
-    color: #000000;
+    color: #f8f9fa;
     font-size: 1.3em;
     margin: 0 0 5px 0;
     font-weight: 600;
@@ -1877,7 +1910,7 @@ input, textarea {
 /* Education paragraphs */
 .educations-list p {
     text-align: right;
-    color: #333333;
+    color: #dee2e6;
     font-size: 1.03em;
     margin: 0;
     font-weight: 400;
@@ -1886,7 +1919,7 @@ input, textarea {
 
 .educations-list strong {
     font-weight: 600;
-    color: #00132d;
+    color: #dee2e6;
 
 }
 
@@ -1918,11 +1951,11 @@ input, textarea {
   background: linear-gradient(
     to bottom,
     transparent,
-    #252422 10%,
-    #393a3c 30%,
-    #ccff33 50%,
-    #393a3c 70%,
-    #252422 90%,
+    #ced4da 10%,
+    #e9ecef 30%,
+    #8cb369 50%,
+    #e9ecef 70%,
+    #ced4da 90%,
     transparent
   );
   animation: linePulse 3s ease-in-out infinite;
@@ -1966,7 +1999,7 @@ input, textarea {
   font-family: 'Tomorrow', sans-serif;
   font-size: 2.2em;
   font-weight: 700;
-  color: #000000;
+  color: #f1faee;
   margin-bottom: 5px; /* Reduced from 15px */
   text-align: left;
 }
@@ -1976,7 +2009,7 @@ input, textarea {
   justify-content: flex-end;
   align-items: flex-start;
   gap: 15px;
-  color: #000000;
+  color: #adb5bd;
   font-family: 'Tomorrow', sans-serif;
   text-align: right;
   width: 100%;
@@ -1991,7 +2024,7 @@ input, textarea {
 
 .contact-info-item i {
   font-size: 2.2em; /* Increased from 2em */
-  color: #eb5e28;
+  color: #f1faee;
   min-width: 40px; /* Increased from 35px */
   margin-top: 5px;
 }
@@ -2004,20 +2037,20 @@ input, textarea {
 
 .contact-info-item .info-label {
   font-size: 1.05em; /* Increased from 1em */
-  color: #000000;
+  color: #f8f9fa;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
 }
 
 .contact-info-item .info-value {
-  color: #5f6177;
+  color: #adb5bd;
   font-weight: 500;
   font-size: 1.25em; /* Increased from 1.1em */
 }
 
 .contact-info-item a {
-  color: #000000;
+  color: #f8f9fa;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -2039,7 +2072,7 @@ input, textarea {
   font-family: 'Tomorrow', sans-serif;
   font-size: 2em; /* Reduced from 2.2em */
   font-weight: 700;
-  color: #000000;
+  color: #f1faee;
   margin-bottom: 20px; /* Reduced from 25px */
   text-align: center;
   width: 100%;
@@ -2057,7 +2090,7 @@ form {
 form label {
   font-family: 'Tomorrow', sans-serif;
   font-size: 0.85em; /* Reduced from 0.95em */
-  color: #000000;
+  color: #f1faee;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -2124,7 +2157,7 @@ form p {
 form label {
   font-family: 'Tomorrow', sans-serif;
   font-size: 0.95em;
-  color: #000000;
+  color: #f8f9fa;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -2136,12 +2169,12 @@ form input[type="tel"],
 form textarea {
   padding: 7px 4px; /* Reduced from 8px */
   border: none;
-  border-bottom: 2px solid rgba(37, 36, 34, 0.15);
+  border-bottom: 2px solid #000814;
   border-radius: 0;
   background: transparent;
   font-family: 'Tomorrow', sans-serif;
   font-size: 0.95rem; /* Reduced from 1rem */
-  color: #000000;
+  color: #f8f9fa;
   transition: all 0.3s ease;
   width: 90%;
   max-width: 320px; /* Reduced from 380px */
@@ -2150,7 +2183,7 @@ form textarea {
 form input:focus,
 form textarea:focus {
   outline: none;
-  border-bottom: 2px solid #393a3c;
+  border-bottom: 2px solid #f1faee;
   background: transparent;
 }
 
@@ -2163,14 +2196,14 @@ form textarea {
 /* Placeholder styling */
 form input::placeholder,
 form textarea::placeholder {
-  color: rgba(37, 36, 34, 0.35);
+  color: #f1faee;
   font-style: italic;
 }
 
 /* Optional: add a gentle highlight on hover */
 form input:hover,
 form textarea:hover {
-  border-bottom-color: #393a3c;
+  border-bottom-color: #f1faee;
 }
 
 /* Submit Button */
@@ -2185,7 +2218,6 @@ form input[type="submit"] {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 10px #979dac;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-top: 8px; /* Reduced from 10px */
@@ -2194,7 +2226,7 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-  background: linear-gradient(135deg, #38b000 0%, #38b000 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #f8f9fa 100%);
   color: #000000;
   transform: translateY(-5px);
 }
