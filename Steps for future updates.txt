@@ -1,0 +1,42 @@
+# SSH into EC2
+ssh -i ~/my-web-app-key.pem ubuntu@3.214.199.76
+
+# Navigate to project
+cd /home/ubuntu/my-web-app
+
+# Pull latest code (if using Git)
+git pull
+
+# Activate venv
+source venv/bin/activate
+
+# Run migrations (if models changed)
+cd website
+python manage.py migrate
+
+# Collect static files (if CSS/JS changed)
+python manage.py collectstatic --noinput
+
+# Restart Gunicorn
+sudo systemctl restart gunicorn
+
+
+
+
+Backup Your Database Regularly
+bash# From EC2
+cp /home/ubuntu/my-web-app/website/db.sqlite3 ~/backups/db-$(date +%Y%m%d).sqlite3 
+
+
+
+
+
+
+
+For future steps:
+Set up HTTPS (I can guide you - takes 10 minutes)
+Get a domain name (and connect it)
+Set up automatic backups
+Add a contact form that sends emails
+
+
