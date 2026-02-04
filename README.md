@@ -32,7 +32,7 @@ A modern, interactive personal portfolio website built with Django, featuring an
 
 1. Clone the repository
 ```
-git clone [https://github.com/yourusername/portfolio.git](https://github.com/Pachakuteq/my-web-app.git)
+git clone https://github.com/Pachakuteq/my-web-app.git
 cd portfolio
 ```
 
