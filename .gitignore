@@ -1,13 +1,40 @@
-db.sqlite3 
-media
-staticfiles
+# Database
+db.sqlite3
+
+# Django-generated media and static files (DON'T track these)
+website/media/
+website/staticfiles/
+
+# Archives
 *.tar.gz
 *.zip
 *.tar
 *.rar
+
+# Backups
 *backup*
-db.sqlite3
-website/media/ 
-website/staticfiles/ 
-"Steps for future updates.txt" 
-"old code for background animation.js" 
+
+# Specific files
+Steps for future updates.txt
+old code for background animation.js
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+env/
+venv/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
