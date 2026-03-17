@@ -2,16 +2,16 @@
 
 A modern, interactive personal portfolio website built with Django, featuring animated backgrounds, dynamic content sections, and a custom carousel for showcasing projects and experience.
 
-## ✨ Features
+## Features
 
-- 🎨 Animated particle network background with constellations constructions
-- 🖱️ Custom cursor with smooth animations
-- 📱 Fully responsive design
-- 🎭 Interactive image carousels using Owl Carousel
-- ⚡ Smooth page transitions and scroll animations
-- 🎯 Dynamic navigation with active state highlighting
+- Animated particle network background with constellations constructions
+- Custom cursor with smooth animations
+- Fully responsive design
+- Interactive image carousels using Owl Carousel
+- Smooth page transitions and scroll animations
+- Dynamic navigation with active state highlighting
 
-## 🛠️ Built With
+## Built With
 
 - **Backend:** Django 5.x, Python 3.x
 - **Frontend:** HTML5, CSS3, JavaScript (ES6+)
@@ -21,7 +21,7 @@ A modern, interactive personal portfolio website built with Django, featuring an
   - Devicon (for technology icons)
 - **Database:** SQLite (development)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Python 3.8+
@@ -65,7 +65,7 @@ python manage.py runserver
 7. Open browser to `http://127.0.0.1:8000/`
 
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── 📁 website
@@ -106,7 +106,7 @@ python manage.py runserver
 
 
 
-## 🎯 Key Features Explained
+## Key Features Explained
 
 ### Animated Background
 - Particle network that creates constellations randomly
@@ -125,7 +125,7 @@ python manage.py runserver
 
 
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - [ ] Implement contact form with email functionality
 - [ ] Add dark/light mode toggle
@@ -133,11 +133,11 @@ python manage.py runserver
 - [ ] Implement project filtering
 - [ ] Add background music
 
-## 📧 Contact
+## Contact
 
 Jose David Regalado Alvarado
 - LinkedIn: [LinkedIn Profile](https://linkedin.com/in/jose-david-regalado)
-- GitHub: [@Pachakuteq](https://github.com/Pachakuteq)
+- GitHub: [@P4cha-qvtek]([https://github.com/Pachakuteq](https://github.com/P4cha-qvtek))
 - Email: jowav467@hotmail.com
 
 ## Collaboration 
