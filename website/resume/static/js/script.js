@@ -631,6 +631,34 @@ $(document).ready(function () {
 
 
 ///----------------------------------------------------------------------- Resume page card expansion
+
+// Hide navbar when clicking Experience or Projects buttons
+const showExperienceBtn = document.getElementById('show-experience');
+const showProjectsBtn = document.getElementById('show-projects');
+const backButtons = document.querySelectorAll('.back-btn');
+
+// Hide navbar when Experience is clicked
+if (showExperienceBtn) {
+    showExperienceBtn.addEventListener('click', function() {
+        document.body.classList.add('hide-navbar');
+    });
+}
+
+// Hide navbar when Projects is clicked
+if (showProjectsBtn) {
+    showProjectsBtn.addEventListener('click', function() {
+        document.body.classList.add('hide-navbar');
+    });
+}
+
+// Show navbar when Back button is clicked
+backButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.body.classList.remove('hide-navbar');
+    });
+});
+
+
 // Toggle card expansion
 function toggleCard(card) {
   const details = card.querySelector('.card-details');

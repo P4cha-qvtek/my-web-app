@@ -167,7 +167,7 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-    background: #8cb369;
+    background: #62af1b;
     color: #000000;
 }
 
@@ -985,6 +985,12 @@ input, textarea {
 
 /************************************************************************** RESUME PAGE Styles */
 
+/* hiding the navbar when buttons are clicked*/
+
+body.hide-navbar .navbar {
+  display: none !important;
+}
+
 /* Dynamic Section on the resume page */
 .top-dynamic-section {
   flex-grow: 1;
@@ -1038,11 +1044,11 @@ input, textarea {
 .option-btn span {
   background: linear-gradient(
     90deg,
-    #8cb369 0%,
+    #80b850 0%,
     #003566 25%,
     #d8f3dc 50%,
-    #5e503f 75%,
-    #8cb369 100%
+    #55422c 75%,
+    #7fb153 100%
   );
   background-size: 200% auto;
   background-clip: text;
@@ -1179,7 +1185,7 @@ input, textarea {
 
 /* Experience Cards - Compact, Timeline Shows Only Dates */
 .experience-card {
-  background: linear-gradient(135deg, #000814 0%, #000814 100%);
+  background: linear-gradient(135deg, #02204e 0%, #000000 100%);
   border-radius: 16px;
   padding: 35px;
   margin: 45px auto 45px 50px; /* Shifted left, timeline goes right */
@@ -1249,7 +1255,7 @@ input, textarea {
   top: 8px;
   width: 8px;
   height: 8px;
-  background: #a8dadc;
+  background: #dd8015;
   border-radius: 50%;
 }
 
@@ -1276,7 +1282,7 @@ input, textarea {
   height: 2px;
   background: repeating-linear-gradient(
     to right,
-    #8cb369 0px,
+    #65ad26 0px,
     #000814 6px,
     transparent 6px,
     transparent 12px
@@ -1306,7 +1312,7 @@ input, textarea {
   top: 47px;
   width: 2px;
   height: calc(100% + 45px);
-  background: #8cb369;
+  background: #6ba538;
   z-index: -3;
 }
 
@@ -1400,11 +1406,11 @@ input, textarea {
   width: 100%;
   flex-shrink: 0;
   display: flex;
-  background: linear-gradient(135deg, #000814 0%, #000814 100%);
+  background: linear-gradient(135deg, #012150 0%, #000814 100%);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 1px 1px 1px #d8e2dc;
-  min-height: 400px;
+  min-height: auto;
   transition: all 0.4s ease;
   position: auto;
 }
@@ -1503,7 +1509,7 @@ input, textarea {
 .project-technologies .tech-badge {
     display: inline-block;
     padding: 8px 16px;
-    background: #8cb369;
+    background: #dd4a10;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 400;
