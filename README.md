@@ -137,7 +137,7 @@ python manage.py runserver
 
 Jose David Regalado Alvarado
 - LinkedIn: [LinkedIn Profile](https://linkedin.com/in/jose-david-regalado)
-- GitHub: [@P4cha-qvtek]([https://github.com/Pachakuteq](https://github.com/P4cha-qvtek))
+- GitHub: [@P4cha-qvtek](https://github.com/P4cha-qvtek))
 - Email: jowav467@hotmail.com
 
 ## Collaboration 
