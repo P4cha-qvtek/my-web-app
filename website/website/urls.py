@@ -19,8 +19,10 @@ from django.urls import path
 from resume import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/home/', permanent=False)),
     path('admin/', admin.site.urls),
     path('home/', views.home, name='home'),
     path('about/', views.about, name='about'),
