@@ -1,0 +1,25 @@
+services:
+  django:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./website/db.sqlite3:/app/website/db.sqlite3
+      - static_volume:/app/website/staticfiles
+      - ./website/media:/app/website/media
+  
+
+  nginx:
+    image: nginx
+    ports: 
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - static_volume:/app/website/staticfiles
+      - ./website/media:/app/website/media
+    depends_on:
+      - django
+  
+volumes:
+  static_volume:
+  media_volume:

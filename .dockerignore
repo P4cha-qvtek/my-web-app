@@ -1,0 +1,15 @@
+venv/
+env/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+db.sqlite3
+website/staticfiles/
+website/media/
+.vscode/
+.idea/
+My_notes.txt
